@@ -8,7 +8,7 @@ public class Client {
           Scanner sc1=new Scanner(System.in);
           String ch=sc1.nextLine();
           if(ch.equals("on")){
-             Socket s=new Socket("localhost", 8086);
+             Socket s=new Socket("localhost", 8080);
              Scanner sc=new Scanner(s.getInputStream());
              PrintStream ps=new PrintStream(s.getOutputStream());
           

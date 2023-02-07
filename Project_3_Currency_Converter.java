@@ -2,96 +2,306 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+class Project_3_Currency_Converter
+    {
+        static float val1,val2;
 
-public class Project_3_Currency_Converter {
+    //Convert to temp
+       public static void show()
+        {
+            JFrame frame = new JFrame();
+            frame.setBounds(10,20,350,400);
 
-    static void show (){
-        JFrame frame = new JFrame("converter");
-        frame.setAlwaysOnTop(true);
-        frame.setSize(600,450);
-        frame.setLayout(null);
+            JLabel title = new JLabel("All Converter");
+            title.setBounds(120,20,100,15);
+            frame.add(title);
 
-        JPanel panel = new JPanel();
-        panel.setSize(600,450);
-         panel.setLayout(null);
-        panel.setBackground(Color.cyan);
-            frame.add(panel);
-
-            Font myf = new Font("ink free", Font.BOLD,20);
-
-        JLabel label = new JLabel("convert currency");
-        label.setBounds(10,30,200,20);
-        label.setFont(myf);
-        panel.add(label);
-
-        JTextField inr = new JTextField();
-        inr .setBounds(10, 60, 100, 30);
-        panel.add(inr);
-
-        JLabel label1 = new JLabel("converted currency value");
-        label1.setBounds(120,60,150,30);
-        label.setFont(myf);
-        panel.add(label1);
+            JLabel temp = new JLabel("Convert to Currency");
+            temp.setBounds(25,75,150,25);     
+            frame.add(temp);
 
 
-        JTextField inr1 = new JTextField();
-        inr1.setBounds(300, 60, 100, 30);
-        panel.add(inr1);
-
-        ButtonGroup bg = new ButtonGroup();
-        JRadioButton one = new JRadioButton("rupees to Dollar");
-        one.setBounds(20,100,200,30);
-        bg.add(one);
-        panel.add(one);
-        JRadioButton two = new JRadioButton("rupees to Euro");
-        two.setBounds(20,140,200,30);
-        panel.add(two);
-        bg.add(two);
-        JRadioButton three = new JRadioButton("rupees to japani currency");
-        three.setBounds(20,180,200,30);
-        panel.add(three);
-        bg.add(three);
+            JButton btem = new JButton("Click Here");
+            btem.setBounds(200,75,100,25);
+            frame.add(btem);
 
 
-        ActionListener action = new ActionListener(){
+            JLabel currency = new JLabel("Convert to Temprecher");
+            currency.setBounds(25,125,150,25);
+            frame.add(currency);
 
-           public void actionPerformed (ActionEvent e){
-           Double  d = Double.parseDouble( inr.getText());
-           double d1 = (d/80);
-           String str= String.valueOf(d1);
-           inr1.setText(str);
+            JButton bcurrency = new JButton("Click Here");
+            bcurrency.setBounds(200,125,100,25);
+            frame.add(bcurrency);
 
-           }
-        };
-        ActionListener action1 = new ActionListener(){
 
-            public void actionPerformed (ActionEvent e){
-             double d = Double.parseDouble(inr.getText());
-            double d2 = (d/101);
-            String str1 = String.valueOf(d2);
-            inr1.setText(str1);
-            }
-         };
-         ActionListener action2 = new ActionListener(){
+            JLabel distance = new JLabel("Convert to Distance");
+            distance.setBounds(25,175,150,25);
+            frame.add(distance);
 
-            public void actionPerformed (ActionEvent e){
+            JButton bdistance = new JButton("Click Here");
+            bdistance.setBounds(200,175,100,25);
+            frame.add(bdistance);
 
-                int a = Integer.parseInt(inr.getText());
-                float b = (a/1.6f);
-                String str2 = String.valueOf(b);
-                inr1.setText(str2);
-            }
-         };
-        one.addActionListener(action);
-        two.addActionListener(action1);
-        three.addActionListener(action2);
-        frame.setVisible(true);
+
+
+            ActionListener tempre = new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    JFrame tefram = new JFrame();
+                    tefram.setBounds(10,20,350,400);
+
+                    JLabel tetitle = new JLabel("Currency Converter");
+                    tetitle.setBounds(100,20,150,25);
+                    tefram.add(tetitle);
+
+                    JLabel value = new JLabel("Enter USD Or INR");
+                    value.setBounds(40,75,150,25);
+                    tefram.add(value);
+
+                    JTextArea txvalue = new JTextArea();
+                    txvalue.setBounds(170,77,125,25);
+                    txvalue.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                    tefram.add(txvalue);
+
+                    JButton inrbutton = new JButton("To INR");
+                    JButton usdbutton = new JButton("To USD");
+                    inrbutton.setBounds(40,130,100,25);
+                    usdbutton.setBounds(180,130,100,25);
+                    tefram.add(inrbutton);
+                    tefram.add(usdbutton);
+
+                    JLabel fina = new JLabel();
+                    fina.setBounds(70,250,200,25);
+                    tefram.add(fina);
+
+
+
+                    ActionListener inrval = new ActionListener()
+                    {
+                        @Override
+                        public void actionPerformed(ActionEvent e)
+                        {
+                            String tval =txvalue.getText();
+                            float ival = Float. parseFloat(tval);
+                            val1 = ival * 80;
+                            fina.setText("INR value=  "+val1+" ₹");
+                            fina.setFont(new Font("Serif", Font.PLAIN, 20));
+                        }
+                    };
+
+                    ActionListener usdval = new ActionListener()
+                    {
+                        @Override
+                        public void actionPerformed(ActionEvent e)
+                        {
+                            String tval =txvalue.getText();
+                            float ival = Float. parseFloat(tval) ;
+                            val2 = ival / 80;
+                            fina.setText("USD value=  "+val2+" $");
+                            fina.setFont(new Font("Serif", Font.PLAIN, 20));
+                        }
+                    };
+
+                    JButton bhome = new JButton("HOME");
+                    bhome.setBounds(100,180,100,25);
+                    tefram.add(bhome);
+                    ActionListener home = new ActionListener()
+                    {
+                        @Override
+                        public void actionPerformed(ActionEvent e)
+                        {
+                            tefram.setVisible(false);
+                            frame.setVisible(true);
+                        }
+                    };
+
+                    bhome.addActionListener(home);
+                    inrbutton.addActionListener(inrval);
+                    usdbutton.addActionListener(usdval);
+                    tefram.setLayout(null);
+                    frame.setVisible(false);
+                    tefram.setVisible(true);
+                }
+            };
+
+    //Canvert to Currency
+
+            ActionListener curren = new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    JFrame cefram = new JFrame();
+                    cefram.setBounds(10,20,350,400);
+
+                    JLabel tetitle = new JLabel("Temprecher Converter");
+                    tetitle.setBounds(100,20,150,25);
+                    cefram.add(tetitle);
+
+                    JLabel value = new JLabel("Enter Celcius OR Farenheit");
+                    value.setBounds(20,75,200,25);
+                    cefram.add(value);
+
+                    JTextArea txvalue = new JTextArea();
+                    txvalue.setBounds(180,77,125,25);
+                    txvalue.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                    cefram.add(txvalue);
+
+                    JButton inrbutton = new JButton("To Celcius");
+                    JButton usdbutton = new JButton("To Farenheit");
+                    inrbutton.setBounds(40,130,100,25);
+                    usdbutton.setBounds(170,130,120,25);
+                    cefram.add(inrbutton);
+                    cefram.add(usdbutton);
+
+                    JLabel fina = new JLabel();
+                    fina.setBounds(70,250,200,25);
+                    cefram.add(fina);
+
+
+
+                    ActionListener inrval = new ActionListener()
+                    {
+                        @Override
+                        public void actionPerformed(ActionEvent e)
+                        {
+                            String tval =txvalue.getText();
+                            float ival = Float. parseFloat(tval) ;
+                            val1 = ((ival - 32) * 5) / 9;
+                            fina.setText("Celcius=  "+val1+" °C");
+                            fina.setFont(new Font("Serif", Font.PLAIN, 20));
+                        }
+                    };
+
+                    ActionListener usdval = new ActionListener()
+                    {
+                        @Override
+                        public void actionPerformed(ActionEvent e)
+                        {
+                            String tval =txvalue.getText();
+                            float ival = Float. parseFloat(tval) ;
+                            val2 =  ((ival * 9) / 5) + 32;
+                            fina.setText("Farenheit=  "+val2+" °F");
+                            fina.setFont(new Font("Serif", Font.PLAIN, 20));
+                        }
+                    };
+                    JButton bhome = new JButton("HOME");
+                    bhome.setBounds(100,180,100,25);
+                    cefram.add(bhome);
+                    ActionListener home = new ActionListener()
+                    {
+                        @Override
+                        public void actionPerformed(ActionEvent e)
+                        {
+                            cefram.setVisible(false);
+                            frame.setVisible(true);
+                        }
+                    };
+
+                    bhome.addActionListener(home);
+                    inrbutton.addActionListener(inrval);
+                    usdbutton.addActionListener(usdval);
+                    cefram.setLayout(null);
+                    frame.setVisible(false);
+                    cefram.setVisible(true);
+                }
+            };
+
+    //Canvert to distance
+
+            ActionListener distan = new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    JFrame difram = new JFrame();
+                    difram.setBounds(10,20,350,400);
+
+                    JLabel tetitle = new JLabel("Distance Converter");
+                    tetitle.setBounds(100,20,150,25);
+                    difram.add(tetitle);
+
+                    JLabel value = new JLabel("Enter KM OR Meter     =");
+                    value.setBounds(20,75,200,25);
+                    difram.add(value);
+
+                    JTextArea txvalue = new JTextArea();
+                    txvalue.setBounds(170,77,130,25);
+                    txvalue.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                    difram.add(txvalue);
+
+                    JButton inrbutton = new JButton("To KM");
+                    JButton usdbutton = new JButton("To Meter");
+                    inrbutton.setBounds(40,130,100,25);
+                    usdbutton.setBounds(170,130,100,25);
+                    difram.add(inrbutton);
+                    difram.add(usdbutton);
+
+                    JLabel fina = new JLabel();
+                    fina.setBounds(70,250,300,25);
+                    difram.add(fina);
+
+
+
+                    ActionListener inrval = new ActionListener()
+                    {
+                        @Override
+                        public void actionPerformed(ActionEvent e)
+                        {
+                            String tval =txvalue.getText();
+                            float ival = Float. parseFloat(tval) ;
+                            val1 = ival/1000;
+                            fina.setText("KiloMeter is =  "+val1+" KM");
+                            fina.setFont(new Font("Serif", Font.PLAIN, 20));
+                        }
+                    };
+
+                    ActionListener usdval = new ActionListener()
+                    {
+                        @Override
+                        public void actionPerformed(ActionEvent e)
+                        {
+                            String tval =txvalue.getText();
+                            float ival = Float. parseFloat(tval) ;
+                            val2 =  ival*1000;
+                            fina.setText("Meter is =  "+val2+" Meter");
+                            fina.setFont(new Font("Serif", Font.PLAIN, 20));
+                        }
+                    };
+
+                    JButton bhome = new JButton("HOME");
+                    bhome.setBounds(100,180,100,25);
+                    difram.add(bhome);
+                    ActionListener home = new ActionListener()
+                    {
+                        @Override
+                        public void actionPerformed(ActionEvent e)
+                        {
+                            difram.setVisible(false);
+                            frame.setVisible(true);
+                        }
+                    };
+                    bhome.addActionListener(home);
+                    inrbutton.addActionListener(inrval);
+                    usdbutton.addActionListener(usdval);
+                    difram.setLayout(null);
+                    frame.setVisible(false);
+                    difram.setVisible(true);
+                }
+            };
+
+            btem.addActionListener(tempre);
+            bcurrency.addActionListener(curren);
+            bdistance.addActionListener(distan);
+            frame.setLayout(null);
+            frame.setVisible(true);
+        }
+
+       public static void main(String[] args)
+    {        
+             show();
     }
-    public static void main(String[] args) {
-                  
-        show();
-
-    }
-
 }
-   
